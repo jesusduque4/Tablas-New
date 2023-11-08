@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ColDef, GridReadyEvent } from 'ag-grid-community';
+import { ColDef,AgChartThemeOverrides,
+  CreateRangeChartParams,
+  FirstDataRenderedEvent,
+  GridReadyEvent } from 'ag-grid-community';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,10 +13,10 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: 'athlete'},
+    { field: 'athlete', chartDataType:'category'},
     { field: 'age'},
     { field: 'country' },
-    { field: 'year' },
+    { field: 'year', chartDataType:'series'},
     { field: 'date'},
     { field: 'sport'},
     { field: 'gold'},
@@ -26,7 +29,24 @@ export class AppComponent {
     filter: true,
     enableRowGroup: true
   };
-  
+
+  public chartThemeOverrides: AgChartThemeOverrides = {
+    common: {
+      title: {
+        enabled: true,
+        text: 'Medals by Age',
+      },
+    },
+    column: {
+      axes: {
+        category: {
+          label: {
+            rotation: 0,
+          },
+        },
+      },
+    },
+  };
   public rowData$!: Observable<any[]>;
 
   constructor(private http: HttpClient) {}

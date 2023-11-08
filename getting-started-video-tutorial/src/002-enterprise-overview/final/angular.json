@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -99,7 +102,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "C:/Users/jesusduque/Documents/Angular/Ejemplo tabla/angular-data-grid/getting-started-video-tutorial/src/002-enterprise-overview/final/node_modules/ag-grid-community/dist/styles/ag-theme-alpine-dark/sass"
             ],
             "scripts": []
           }
